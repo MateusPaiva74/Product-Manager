@@ -1,0 +1,10 @@
+{
+    "suppliers":[
+        {
+            "id": 1,
+            "name": "Walmart",
+            "cnpj": "28.717.647/0001-58",
+            "email": "sac@walmart.com.br"
+        }
+    ]
+}
