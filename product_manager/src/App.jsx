@@ -1,10 +1,11 @@
 import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import SupplierList from './pages/supplier/SupplierList'
 const App = () => {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path="/"></Route>
+      <Route path="/" element={<SupplierList/>}></Route>
     </Routes>
     </BrowserRouter>
   )
