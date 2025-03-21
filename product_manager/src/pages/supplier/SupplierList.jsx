@@ -29,6 +29,15 @@ const SupplierList = () => {
     const closeModal = () => {
         setOpenModal(false)
     }
+    const removeSupplier = () => {
+        axios.delete(`/suppliers/${selectedSupplier.id}`)
+        .then(() => {
+            setSupplier(prevSupplier => prevSupplier.filter(supplier => supplier.id))
+            closeModal()
+        }).catch(error => {
+            console.error("Ocorreu um erro ao deletar o fornecedor", error)
+        })
+
     return (
     <div className="container mt-5">
         <h2 className="mb-4">List of Suppliers</h2>
@@ -67,9 +76,13 @@ const SupplierList = () => {
         >
             <FaExclamationTriangle className="icon"/>
             <h2>Confirm Deletion</h2>
+            <p>Are you sure you want to delete the supplier {selectedSupplier && selectedSupplier.name}?</p>
+            <div className="modalButtons">
+                <button onClick={closeModal} className="btn btn-secondary"> Cancel</button>
+            </div>
         </Modal>
     </div>
   )
 }
-
+}
 export default SupplierList
