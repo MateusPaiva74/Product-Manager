@@ -18,5 +18,22 @@
       "email": "mateusandre@gmail.com",
       "id": 3
     }
+  ],
+
+  "products": [
+    {
+      "name": "iphone",
+      "price": "70000",
+      "descricao": "iphone bolado",
+      "quantityStock": "6",
+      "id": 2
+    },
+    {
+      "name": "sas",
+      "price": "32323",
+      "descricao": "dssd",
+      "quantityStock": "22",
+      "id": 4
+    }
   ]
 }
