@@ -1,10 +1,22 @@
 {
-    "suppliers":[
-        {
-            "id": 1,
-            "name": "Walmart",
-            "cnpj": "28.717.647/0001-58",
-            "email": "sac@walmart.com.br"
-        }
-    ]
+  "suppliers": [
+    {
+      "id": 1,
+      "name": "Walmart",
+      "cnpj": "28.717.647/0001-58",
+      "email": "sac@walmart.com.br"
+    },
+    {
+      "name": "Mateus Andre",
+      "cnpj": "11.111.111/1111-11",
+      "email": "mateusandre@gmail.com",
+      "id": 2
+    },
+    {
+      "name": "Mateus Andre",
+      "cnpj": "15.006.470/0001-30",
+      "email": "mateusandre@gmail.com",
+      "id": 3
+    }
+  ]
 }
