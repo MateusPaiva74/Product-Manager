@@ -36,7 +36,7 @@ const SupplierForm = () => {
   }
   const closeModal = () => {
     setModalOpen(false)
-    navigate("/list-suppliers")
+    navigate("/suppliers-list")
   }
   const addOtherSupplier = () => {
     setModalOpen(false)

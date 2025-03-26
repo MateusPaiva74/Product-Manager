@@ -1,6 +1,8 @@
 import axios from 'axios'
-import React, { useEffect } from 'react'
-import { FaPlus, FaQuestionCircle } from 'react-icons/fa'
+import React, { useEffect, useEffect } from 'react'
+import { FaPlus, FaQuestionCircle, FaEdit, FaTrash, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import Modal from 'react-modal'
 
 const ProductList = () => {
 
@@ -39,29 +41,34 @@ const ProductList = () => {
     }
 
     const removeProduct = () => {
-        axios.delete('/products/${selectProduct.id}')
+        axios.delete(`/products/${selectProduct.id}`)
             .then(() => {
                 setProducts(prevProducts => prevProducts.filter(product => product.id !== selectProduct.id))
                 closeModal()
                 openSuccessModal()
             })
-
+            .catch(error => {
+                console.error("Error:", error)
+                closeModal()
+            })
+    }
     const toogleTooltip = () => {
         setTooltipOpen(!tooltipOpen)
     }
-}
+
   return (
     <div className="container mt-5">
         <h2 className="mb-4" style={{position: "relative"}}>
             List of Products{''}
-            <FaQuestionCircle className="tooltip-icon" onClick={toogleTooltip} />
+            <FaQuestionCircle 
+                className="tooltip-icon" 
+                onClick={toogleTooltip} />
             {tooltipOpen && (
                 <div className="tooltip">
                     Here you can see all the products registered in the system. You can also add, edit and delete products.
                 </div>
             )}
         </h2>
-
         <Link to="/add-products" className="btn btn-primary mb-2">
             <FaPlus className="icon"/> Add Product
         </Link>
@@ -82,7 +89,7 @@ const ProductList = () => {
                         <td>{product.name}</td>
                         <td>{parseFloat(product.price).toFixed(2)}</td>
                         <td>{product.description}</td>
-                        <td>{product.quantity_stock}</td>
+                        <td>{product.quantityStock}</td>
                         <td>{product.supplier ? product.supplier.name : "Não informado"}</td>
                         <td>
                             <Link to={`/edit-products/${product.id}`} className="btn btn-sm btn-warning">
@@ -127,5 +134,4 @@ const ProductList = () => {
     </div>
   )
 }
-
 export default ProductList
