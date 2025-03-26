@@ -1,5 +1,5 @@
-import axios from 'axios'
-import React, { useEffect, useEffect } from 'react'
+import axios from '../../api'
+import React, { useEffect, useState } from 'react'
 import { FaPlus, FaQuestionCircle, FaEdit, FaTrash, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Modal from 'react-modal'

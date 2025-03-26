@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import axios from '../../api'
 import Modal from 'react-modal'
 import {FaCheckCircle,FaExclamationTriangle, FaQuestionCircle} from 'react-icons/fa'
 
@@ -27,7 +27,9 @@ const ProductForm = () => {
       if(id){
         axios.get(`/products/${id}`)
           .then(response => {
-            setProduct({...response.data,supplierId : response.data.supplier ? response.data.supplier.id : ""})
+            setProduct({...response.data,
+              supplierId : response.data.supplier ? response.data.supplier.id : ''
+            })
           })
           .catch(error => console.error("Error", error))
       }else{
@@ -75,7 +77,7 @@ const ProductForm = () => {
   }
   const addOtherProduct = () => {
     setModalOpen(false)
-    setProduct({name: '', price:'',descricao:'',quantityStock:'',supplierId:''})
+    setProduct({name: '', price:0,descricao:'',quantityStock:0,supplierId:''})
   }
   const toggleTooltip = () => {
     setTooltipOpen(!tooltipOpen)

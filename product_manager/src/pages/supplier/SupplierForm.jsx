@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from '../../api'
 import { FaQuestionCircle, FaCheckCircle } from 'react-icons/fa'
 import Modal from 'react-modal'
-import InputMask from 'react-input-mask'
+
 
 Modal.setAppElement('#root')
 
@@ -71,7 +71,7 @@ const SupplierForm = () => {
           </div>
           <div className="form-group">
             <label htmlFor="cnpj">CNPJ of Supplier</label>
-            <InputMask
+            <input
                         mask="99.999.999/9999-99"
                         className="form-control"
                         id="cnpj"

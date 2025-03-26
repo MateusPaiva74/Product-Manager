@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { FaPlus, FaTrash, FaEdit, FaExclamationTriangle, FaCheckCircle, FaQuestionCircle } from 'react-icons/fa'
 import Modal from 'react-modal'
 
+
 const SupplierList = () => {
 
     const [supplier, setSupplier] = useState([])
