@@ -12,7 +12,7 @@ const ProductForm = () => {
   const [supplier, setSupplier] = useState([])
   const [modalOpen, setModalOpen] = useState(false)
   const [modalErrorOpen, setModalErrorOpen] = useState(false)
-  const [message, setMessageError] = useState([])
+  const [messageError, setMessageError] = useState([])
   const [tooltipOpen, setTooltipOpen] = useState(false)
   const navigate = useNavigate()
   const { id } = useParams()
@@ -58,7 +58,7 @@ const ProductForm = () => {
   }
   const handlePriceChange = (event) => {
     let value = event.target.value
-    value = value.replace(',', ',')
+    value = value.replace(',', '.')
     value = value.replace(/[ˆ0-9.]/g, '')
     if (value.includes(',')){
       const [partInt, partDecimal] = value.split(',')
@@ -74,8 +74,8 @@ const ProductForm = () => {
     setModalErrorOpen(false)
   }
   const addOtherProduct = () => {
-    setModalOpen(fasle)
-    setProduct({nome: '', price:'',descricao:'',quantityStock:'',supplierId:''})
+    setModalOpen(false)
+    setProduct({name: '', price:'',descricao:'',quantityStock:'',supplierId:''})
   }
   const toggleTooltip = () => {
     setTooltipOpen(!tooltipOpen)
@@ -84,7 +84,9 @@ const ProductForm = () => {
     <div className="form-container">
       <h2 style={{position:'relative'}}>
         {id? 'Edit Product' : 'Add Product'}{''}
-        <FaQuestionCircle className="tooltip-icon" onClick={toggleTooltip}/>
+        <FaQuestionCircle 
+            className="tooltip-icon" 
+            onClick={toggleTooltip}/>
         {tooltipOpen && (
           <div className="tooltip">
             {id ? 'Use this form to edit a product' : 'Use this form to add a product'}
@@ -164,6 +166,37 @@ const ProductForm = () => {
               {id ? 'Edit' : 'Add'}
             </button>
       </form>
+      <Modal
+          isOpen={modalOpen}
+          onRequestClose={closeModal}
+          className="modal"
+          overlayClassName="overlay"
+      >
+        <div className="modalContent">
+          <FaCheckCircle className="icon-check"/>
+          <h2>{id ? 'Product Update successfully' : 'Product Add successfully '}</h2>
+          <div className="modalButtons">
+            <button onClick={closeModal} className="btn-success">Close</button>
+            {!id && <button onClick={addOtherProduct} className="btn-secondary">Add Other Product</button>}
+          </div>
+        </div>
+      </Modal>
+        
+        <Modal
+            isOpen={modalErrorOpen}
+            onRequestClose={closeModalError}
+            className="modal"
+            overlayClassName="overlay"
+        >
+          <div className="modalContent">
+            <FaExclamationTriangle className="icon-errorIcon"/>
+            <h2>Error:</h2>
+              {messageError.map((message, index) => (
+                <h4 key={index}>{message}</h4>
+              ))}
+            <button onClick={closeModalError} className="btn-secondary">Close</button>
+          </div>
+        </Modal>
     </div>
   )
 }
